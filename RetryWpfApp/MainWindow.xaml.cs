@@ -6,9 +6,6 @@ using System.Windows;
 
 namespace RetryWpfApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         int cnt = 0;
@@ -19,10 +16,8 @@ namespace RetryWpfApp
         }
 
         /// <summary>
-        /// リトライ
+        /// リトライ(満了時も処理を継続)
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             cnt = 0;
@@ -39,6 +34,9 @@ namespace RetryWpfApp
                 });
         }
 
+        /// <summary>
+        /// リトライ(満了時は例外を挙げる)
+        /// </summary>
         private async void Button_Click2(object sender, RoutedEventArgs e)
         {
             cnt = 0;
@@ -61,9 +59,7 @@ namespace RetryWpfApp
             {
                 Debug.WriteLine("画面側のtrycatch");
             }
-
         }
-
 
         private async Task ErrorFunc()
         {
